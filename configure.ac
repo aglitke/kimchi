@@ -37,8 +37,11 @@ AS_IF([test "x$PACKAGE_RELEASE" = x],
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wno-portability])
 AM_PATH_PYTHON([2.6])
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.10])
 
 AC_CONFIG_FILES([
+    po/Makefile.in
     Makefile
     data/Makefile
     data/screenshots/Makefile
