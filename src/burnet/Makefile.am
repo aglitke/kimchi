@@ -20,8 +20,26 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-SUBDIRS = src ui data docs log contrib
+SOURCE = \
+	asynctask.py      \
+	config.py         \
+	controller.py     \
+	__init__.py       \
+	isoinfo.py        \
+	mockmodel.py      \
+	model.py          \
+	objectstore.py    \
+	osinfo.py         \
+	root.py           \
+	screenshot.py     \
+	server.py         \
+	template.py       \
+	vmtemplate.py     \
+	vnc.py            \
+	websocket.py      \
+	websockify.py     \
+	xmlutils.py
 
-ACLOCAL_AMFLAGS = --install -I m4
+kimchi_PYTHON = $(SOURCE)
 
-EXTRA_DIST = config.rpath
+kimchidir = $(pythondir)/burnet

@@ -26,6 +26,7 @@
 import logging
 import os
 import sys
+sys.path.insert(1, '@pythondir@')
 
 import burnet.server
 import burnet.config

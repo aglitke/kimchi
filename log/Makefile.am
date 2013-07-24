@@ -20,8 +20,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-SUBDIRS = src ui data docs log contrib
+CLEANFILES = *.log
 
-ACLOCAL_AMFLAGS = --install -I m4
-
-EXTRA_DIST = config.rpath
+install-data-local:
+	$(MKDIR_P) $(DESTDIR)/var/log/burnet

@@ -40,6 +40,25 @@ AM_PATH_PYTHON([2.6])
 
 AC_CONFIG_FILES([
     Makefile
+    data/Makefile
+    data/screenshots/Makefile
+    docs/Makefile
+    log/Makefile
+    src/Makefile
+    src/burnet/Makefile
+    ui/Makefile
+    ui/css/Makefile
+    ui/css/novnc/Makefile
+    ui/css/fonts/Makefile
+    ui/css/fonts/novnc/Makefile
+    ui/images/Makefile
+    ui/images/theme-default/Makefile
+    ui/js/Makefile
+    ui/js/novnc/Makefile
+    ui/js/novnc/web-socket-js/Makefile
+    ui/libs/Makefile
+    ui/pages/Makefile
+    contrib/Makefile
 ])
 
 AC_OUTPUT
