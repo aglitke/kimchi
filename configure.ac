@@ -62,6 +62,10 @@ AC_CONFIG_FILES([
     ui/libs/Makefile
     ui/pages/Makefile
     contrib/Makefile
+    contrib/DEBIAN/Makefile
+    contrib/DEBIAN/control
+    contrib/kimchi.spec.fedora
+    contrib/kimchi.spec.suse
 ])
 
 AC_OUTPUT
