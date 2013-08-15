@@ -1,0 +1,71 @@
+#*
+ * Kimchi
+ *
+ * Copyright IBM Corp, 2013
+ *
+ * Authors:
+ *  Adam Litke <agl@linux.vnet.ibm.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *#
+
+#encoding UTF-8
+#import gettext
+#silent t = gettext.translation($lang.domain, $lang.localedir, languages=$lang.lang)
+#silent _ = t.gettext
+#silent _t = t.gettext
+<!doctype html>
+<html class="no-js" lang=$lang.lang[0]>
+<head>
+    <meta charset="UTF-8">
+    <title>Kimchi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link rel="stylesheet" href="css/theme-default.min.css">
+    <script src="libs/modernizr.custom.76777.js"></script>
+</head>
+
+
+<body>
+<div class="window" style="width: 400px;height: 240px;">
+	<header>
+		<h1 class="title">$_("Login")</h1>
+	</header>
+	<div class="content">
+		<form id="form-login">
+		<section class="form-section">
+			<div class="field">
+                <h5>$_("User")</h5>
+            	<input id="userid" type="text" class="text" style="width: 300px" name="userid">
+			</div>
+			<div class="field">
+                <h5>$_("Password")</h5>
+				<input id="password" type="password" class="text" style="width: 300px" name="password">
+			</div>
+		</section>
+		</form>
+	</div>
+	<footer>
+		<div class="btn-group">
+			<button id="doLogin" class="btn-normal" href="javascript:void(0);"><span class="text">$_("Login")</span></button>
+		</div>
+	</footer>
+</div>
+
+<script src="libs/jquery-1.10.0.min.js"></script>
+<script src="js/kimchi.min.js"></script>
+<script>
+	kimchi.login_main();
+</script>
+</body>
+</html>

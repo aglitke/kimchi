@@ -233,6 +233,26 @@ var kimchi = {
 			success : suc,
 			error : err
 		});
-	}
+	},
 
+	login : function(settings, suc, err) {
+		$.ajax({
+			url : "/login",
+			type : "POST",
+			contentType : "application/json",
+			data : JSON.stringify(settings),
+			dataType : "json"
+		}).done(suc).fail(err);
+	},
+
+	logout : function(suc, err) {
+		$.ajax({
+			url : '/logout',
+			type : 'POST',
+			contentType : 'application/json',
+			dataType : 'json',
+			success : suc,
+			error : err
+		});
+	}
 };

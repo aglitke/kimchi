@@ -86,6 +86,14 @@ kimchi.main = function() {
         loadPage(url);
     };
 
+    $('#user').on('click', function() {
+        kimchi.logout(function() {
+            location.reload(true);
+        }, function() {
+            kimchi.message.error(i18n['msg.logout.failed']);
+        });
+    });
+
     // Load i18n translation strings first and then render the page.
     $('#main').load('i18n.html', function() {
         /*

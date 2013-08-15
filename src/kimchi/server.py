@@ -31,8 +31,11 @@ import model
 import mockmodel
 import config
 import sslcert
+import template
+import auth
 import os
 import cherrypy
+
 
 LOGGING_LEVEL = {"debug": logging.DEBUG,
                  "info": logging.INFO,
@@ -58,23 +61,32 @@ class Server(object):
         '/': { 'tools.trailing_slash.on': False,
                'tools.staticdir.root': config.get_prefix(),
                'request.methods_with_bodies': ('POST', 'PUT'),
-               'tools.nocache.on': True },
+               'tools.nocache.on': True,
+               'tools.sessions.on': True,
+               'tools.sessions.name': 'kimchi',
+               'tools.kimchiauth.on': True},
+        '/login.html': {'tools.kimchiauth.on': False},
+        '/login': {'tools.kimchiauth.on': False},
         '/css': {
             'tools.staticdir.on': True,
             'tools.staticdir.dir': 'ui/css',
-            'tools.nocache.on': False },
+            'tools.nocache.on': False,
+            'tools.kimchiauth.on': False},
         '/js': {
             'tools.staticdir.on': True,
             'tools.staticdir.dir': 'ui/js',
-            'tools.nocache.on': False },
+            'tools.nocache.on': False,
+            'tools.kimchiauth.on': False},
         '/libs': {
             'tools.staticdir.on': True,
             'tools.staticdir.dir': 'ui/libs',
-            'tools.nocache.on': False },
+            'tools.nocache.on': False,
+            'tools.kimchiauth.on': False},
         '/images': {
             'tools.staticdir.on': True,
             'tools.staticdir.dir': 'ui/images',
-            'tools.nocache.on': False },
+            'tools.nocache.on': False,
+            'tools.kimchiauth.on': False},
         '/data/screenshots': {
             'tools.staticdir.on': True,
             'tools.staticdir.dir': 'data/screenshots',
@@ -83,6 +95,8 @@ class Server(object):
 
     def __init__(self, options):
         cherrypy.tools.nocache = cherrypy.Tool('on_end_resource', set_no_cache)
+        cherrypy.tools.kimchiauth = cherrypy.Tool('before_handler',
+                                                  auth.kimchiauth)
         cherrypy.server.socket_host = options.host
         cherrypy.server.socket_port = options.port
 
